@@ -15,6 +15,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
       with:
+        fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
         token: ${{ github.token }}
     - run: mkdir /input /output /output/Reporting /output/Reports
