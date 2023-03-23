@@ -10,6 +10,9 @@ inputs:
   type-reporting:
     description: 'Type of reporting'
     required: true
+  pat:
+    description: 'Personal Access Token'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -17,7 +20,7 @@ runs:
       with:
         fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
-        token: ${{ secrets.ACCESS_TOKEN }}
+        token: ${{ inputs.pat }}
     - run: mkdir /input /output /output/Reporting /output/Reports
       shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
