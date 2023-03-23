@@ -21,7 +21,7 @@ runs:
         fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
-    - run: mkdir /input /output /output/Reporting /output/Reports
+    - run: mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
       shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
       shell: bash
