@@ -4,6 +4,12 @@ inputs:
   config-dir:
     description: 'Configuration directory'
     required: true
+  config-file:
+    description: 'Run file'
+    required: true
+  type-reporting:
+    description: 'Type of reporting'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -11,12 +17,24 @@ runs:
       with:
         repository: barroqueiro/sarif-orchestrator
         token: ${{ secrets.ACCESS_TOKEN }}
+    - run: mkdir /input /output /output/Reporting /output/Reports
+      shell: bash
+    - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
+      shell: bash
+    - run: echo "TYPE=${{ inputs.type-reporting }}" >> .env
+      shell: bash
+    - run: echo "CONFIG_HOST_DIR=${{ inputs.config_dir }}" >> .env
+      shell: bash
+    - run: cp .env ./docker
+      shell: bash
     - run: cd sarif-orchestrator/docker
       shell: bash
-    - id: build image
-      run: docker-compose build
+    - run: cat .env
       shell: bash
-    - run: docker-compose up orchestrator
-      shell: bash
-    - run: docker-compose up report
-      shell: bash
+    # - id: build image
+    #   run: docker-compose build
+    #   shell: bash
+    # - run: docker-compose up orchestrator
+    #   shell: bash
+    # - run: docker-compose up report
+    #   shell: bash
