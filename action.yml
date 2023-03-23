@@ -17,7 +17,7 @@ runs:
       with:
         fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
-        token: ${{ github.token }}
+        token: ${{ secrets.ACCESS_TOKEN }}
     - run: mkdir /input /output /output/Reporting /output/Reports
       shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
