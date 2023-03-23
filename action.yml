@@ -23,6 +23,10 @@ runs:
         token: ${{ inputs.pat }}
     - run: mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
       shell: bash
+    - run: ls -la
+      shell: bash
+    - run: cd sarif-orchestrator/docker
+      shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
       shell: bash
     - run: echo "TYPE=${{ inputs.type-reporting }}" >> .env
@@ -30,8 +34,6 @@ runs:
     - run: echo "CONFIG_HOST_DIR=${{ inputs.config_dir }}" >> .env
       shell: bash
     - run: cp .env ./docker
-      shell: bash
-    - run: cd sarif-orchestrator/docker
       shell: bash
     - run: cat .env
       shell: bash
