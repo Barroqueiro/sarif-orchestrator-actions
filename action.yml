@@ -1,0 +1,22 @@
+name: 'sarif-orchestrator-action'
+description: 'Adaptation of sarif-orchestrator to a GitHub Action'
+inputs:
+  config-dir:
+    description: 'Configuration directory'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v1  
+      with:
+        repository: barroqueiro/sarif-orchestrator
+        token: ${{ secrets.ACCESS_TOKEN }}
+    - run: cd sarif-orchestrator/docker
+      shell: bash
+    - id: build image
+      run: docker-compose build
+      shell: bash
+    - run: docker-compose up orchestrator
+      shell: bash
+    - run: docker-compose up report
+      shell: bash
