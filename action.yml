@@ -30,7 +30,7 @@ runs:
             cd ../sarif-orchestrator-testing
             ls -la
       shell: bash
-    -  run: ls -la
+    - run: ls -la
       shell: bash
     - run: |
           mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
