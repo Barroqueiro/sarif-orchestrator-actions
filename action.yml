@@ -40,8 +40,7 @@ runs:
           mv .env ../sarif-orchestrator/docker
           cd ../sarif-orchestrator/docker
           cat .env
+          docker-compose build
+          docker-compose up orchestrator
+          docker-compose up report
       shell: bash
-
-          # docker-compose build
-          # docker-compose up orchestrator
-          # docker-compose up report
