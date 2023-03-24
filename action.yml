@@ -16,16 +16,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ls -la
-      shell: bash
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         ref: main
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
-        path: ".."
-    - run: ls -la
+    - run: ls -la -Rs
       shell: bash
     - run: ls -la ..
       shell: bash
