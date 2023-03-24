@@ -16,7 +16,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ls -la -R
+    - run: mkdir /tmp/input
       shell: bash
     - uses: actions/checkout@v3
       with:
@@ -24,13 +24,14 @@ runs:
         ref: main
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
+        path: /tmp/input
     - run: ls -la -R
       shell: bash
     - run: ls -la ..
       shell: bash
     - run: |
-          mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
-          cd docker
+          mkdir /tmp/output /tmp/output/Reporting /tmp/output/Reports
+          cd /tmp/input/sarif-orchestrator/docker
           touch .env
           echo "INPUT_HOST_DIR=/tmp/input" >> .env
           echo "OUTPUT_HOST_DIR=/tmp/output" >> .env
