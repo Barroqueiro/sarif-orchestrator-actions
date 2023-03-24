@@ -25,7 +25,9 @@ runs:
       shell: bash
     - run: ls -la
       shell: bash
-    - run: cd sarif-orchestrator/docker
+    - run: ls -la ..
+      shell: bash
+    - run: docker
       shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
       shell: bash
@@ -33,7 +35,7 @@ runs:
       shell: bash
     - run: echo "CONFIG_HOST_DIR=${{ inputs.config_dir }}" >> .env
       shell: bash
-    - run: cp .env ./docker
+    - run: cp .env
       shell: bash
     - run: cat .env
       shell: bash
