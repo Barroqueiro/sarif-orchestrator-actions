@@ -27,19 +27,17 @@ runs:
         path: sarif-orchestrator
     - run: mv sarif-orchestrator ..
       shell: bash
-    - run: ls -la ..
-      shell: bash
     - run: |
           mkdir /tmp/output /tmp/output/Reporting /tmp/output/Reports
-          cd /tmp/input/sarif-orchestrator/docker
+          cd ../sarif-orchestrator/docker
           touch .env
-          echo "INPUT_HOST_DIR=/tmp/input" >> .env
+          echo "INPUT_HOST_DIR=$(pwd)" >> .env
           echo "OUTPUT_HOST_DIR=/tmp/output" >> .env
           echo "INPUT_DIR=/tmp/output/Reporting" >> .env
           echo "OUTPUT_DIR=/tmp/output/Reports" >> .env
           echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
           echo "TYPE=${{ inputs.type-reporting }}" >> .env
-          echo "CONFIG_HOST_DIR=${{ inputs.config-dir }}" >> .env
+          echo "CONFIG_HOST_DIR=$(pwd)/${{ inputs.config-dir }}" >> .env
           cat .env
       shell: bash
 
