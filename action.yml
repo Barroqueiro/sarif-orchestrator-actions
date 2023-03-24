@@ -16,9 +16,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    -  run: ls -la
+    - run: ls -la
       shell: bash
-    -  run: ls -la ..
+    - run: ls -la ..
       shell: bash
     - uses: actions/checkout@v3
       with:
