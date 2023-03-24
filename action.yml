@@ -25,7 +25,7 @@ runs:
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
         path: sarif-orchestrator
-    - run: ls -la -R
+    - run: mv sarif-orchestrator ..
       shell: bash
     - run: ls -la ..
       shell: bash
