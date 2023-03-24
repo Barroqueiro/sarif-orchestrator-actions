@@ -22,6 +22,7 @@ runs:
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
     - run: ls -la ..
+      shell: bash
     - run: |
           mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
           cd docker
