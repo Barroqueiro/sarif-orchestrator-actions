@@ -21,7 +21,10 @@ runs:
         fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
-    - run: ls -la ..
+    - run: |
+            ls -la ..
+            cd arif-orchestrator-testing
+            ls -la
       shell: bash
     - run: ls -la
       shell: bash
