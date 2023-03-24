@@ -21,17 +21,19 @@ runs:
         fetch-depth: 0
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
-    - run: mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
-      shell: bash
-    - run: cd docker
+    - run: |
+          mkdir /tmp/input /tmp/output /tmp/output/Reporting /tmp/output/Reports
+          cd docker
       shell: bash
     - run: touch .env
+      shell: bash
+    - run: echo "INPUT_HOST_DIR=/tmp/input" >> .env
       shell: bash
     - run: echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
       shell: bash
     - run: echo "TYPE=${{ inputs.type-reporting }}" >> .env
       shell: bash
-    - run: echo "CONFIG_HOST_DIR=${{ inputs.config_dir }}" >> .env
+    - run: echo "CONFIG_HOST_DIR=${{ inputs.config-dir }}" >> .env
       shell: bash
     - run: cat .env
       shell: bash
