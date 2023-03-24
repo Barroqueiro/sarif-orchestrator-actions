@@ -16,8 +16,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: cd ..
-      shell: bash
     - run: ls -la
       shell: bash
     - uses: actions/checkout@v3
@@ -26,6 +24,7 @@ runs:
         ref: main
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
+        path: ".."
     - run: ls -la
       shell: bash
     - run: ls -la ..
