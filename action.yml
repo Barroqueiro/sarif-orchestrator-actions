@@ -18,11 +18,16 @@ runs:
   steps:
     - run: cd ..
       shell: bash
+    - run: ls -la
+      shell: bash
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        ref: main
         repository: barroqueiro/sarif-orchestrator
         token: ${{ inputs.pat }}
+    - run: ls -la
+      shell: bash
     - run: ls -la ..
       shell: bash
     - run: |
