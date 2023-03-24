@@ -28,16 +28,12 @@ runs:
           echo "INPUT_HOST_DIR=/tmp/input" >> .env
           echo "OUTPUT_HOST_DIR=/tmp/output" >> .env
           echo "INPUT_DIR=/tmp/output/Reporting" >> .env
-          echo "INPUT_HOST_DIR=/tmp/output/Reports" >> .env
+          echo "OUTPUT_DIR=/tmp/output/Reports" >> .env
           echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
           echo "TYPE=${{ inputs.type-reporting }}" >> .env
           echo "CONFIG_HOST_DIR=${{ inputs.config-dir }}" >> .env
+          docker-compose build
+          docker-compose up orchestrator
+          docker-compose up report
           cat .env
       shell: bash
-    # - id: build image
-    #   run: docker-compose build
-    #   shell: bash
-    # - run: docker-compose up orchestrator
-    #   shell: bash
-    # - run: docker-compose up report
-    #   shell: bash
