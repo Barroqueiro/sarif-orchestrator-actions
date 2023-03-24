@@ -23,7 +23,7 @@ runs:
         token: ${{ inputs.pat }}
     - run: |
             ls -la ..
-            cd arif-orchestrator-testing
+            cd ../sarif-orchestrator-testing
             ls -la
       shell: bash
     - run: ls -la
