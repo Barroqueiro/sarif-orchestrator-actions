@@ -16,8 +16,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: mkdir /tmp/input
-      shell: bash
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -30,12 +28,12 @@ runs:
     - run: |
           mkdir /tmp/output /tmp/output/Reporting /tmp/output/Reports
           touch .env
-          echo "INPUT_HOST_DIR=$(pwd)" >> .env
-          echo "OUTPUT_HOST_DIR=/tmp/output" >> .env
-          echo "INPUT_DIR=/tmp/output/Reporting" >> .env
-          echo "OUTPUT_DIR=/tmp/output/Reports" >> .env
-          echo "CONFIG_FILE=${{ inputs.config-file }}" >> .env
-          echo "TYPE=${{ inputs.type-reporting }}" >> .env
+          echo "ORCHESTRATOR_INPUT_HOST_DIR=$(pwd)" >> .env
+          echo "ORCHESTRATOR_OUTPUT_HOST_DIR=/tmp/output" >> .env
+          echo "REPORT_INPUT_HOST_DIR=/tmp/output/Reporting" >> .env
+          echo "REPORT_OUTPUT_HOST_DIR=/tmp/output/Reports" >> .env
+          echo "ORCHESTRATOR_CONFIG_FILE=${{ inputs.config-file }}" >> .env
+          echo "REPORT_TYPE=${{ inputs.type-reporting }}" >> .env
           echo "CONFIG_HOST_DIR=$(pwd)/${{ inputs.config-dir }}" >> .env
           mv .env ../sarif-orchestrator/docker
           cd ../sarif-orchestrator/docker
