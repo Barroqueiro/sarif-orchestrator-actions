@@ -10,9 +10,6 @@ inputs:
   type-reporting:
     description: 'Type of reporting'
     required: true
-  pat:
-    description: 'Personal Access Token'
-    required: true
 runs:
   using: "composite"
   steps:
@@ -21,7 +18,6 @@ runs:
         fetch-depth: 0
         ref: main
         repository: barroqueiro/sarif-orchestrator
-        token: ${{ inputs.pat }}
         path: sarif-orchestrator
     - run: mv sarif-orchestrator ..
       shell: bash
